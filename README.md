@@ -1,17 +1,15 @@
 # NETWORKWALKS-SHADRACK-B084-WIRESHARK
 More About my Wireshark project in Week 1 at NETWORKWALKS
 
-# Cybersecurity Lab Environment Setup
+# Cybersecurity Wireshark Completed Labs at NetworkWalks
 
-**Week 1 Project — NetworkWalks B084**
-
-**Setting up a controlled virtual lab for cybersecurity learning and authorized security testing**
+**Week 1 Extra Project — NetworkWalks B084**
 
 </div>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Cybersecurity-WireShark-404040?style=flat-square&labelColor=C00000" />
-  <img src="https://img.shields.io/badge/WireShark-v2026.3-E87500?style=flat-square&labelColor=000000&logo=wireshark&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cybersecurity-404040?style=flat-square&labelColor=C00000" />
+  <img src="https://img.shields.io/badge/WireShark-E87500?style=flat-square&labelColor=blue&logo=wireshark&logoColor=white" />
   <img src="https://img.shields.io/badge/NetworkWalks-B084-C00000?style=flat-square" />
 </p>
 
@@ -46,165 +44,80 @@ with the various use of Wireshark as a Cybersecurity tool
 
 # -- Project Procedure
 
-## Assignment 1. Find the Attacker's IP
+## Task 1. Find the Attacker's IP
 
 I completed all 10 assignments of this lab by using filters "ip.addr = " to find and trace the footsteps of a suspicious IP address then I realized there's been a specific IP address that has been probing many ports of the server at a short period of time which raise awareness of a possible attack. Below is the completed categories of
 assignments done in this lab
 
 ### Screenshot
 
+<img width="980" height="780" alt="Lab 3 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/1e817881-dede-4831-affe-4fa42df0c59a" />
 
 
 ---
 
-## Step 2. Set Up Kali Linux
+## Task 2. Follow TCP stream
+Followed a certain TCP stream and read a chat between a two employers and obtained their Guest WiFi password and Temporary password of one of the employers. This was focused on how unencrypted conversation can be intercepted with the Wireshark tool. The solution was to use a secure TCP stream like HTTPS to get conversations encrypted.
 
-Kali Linux 2025.3 was configured as the guest operating system inside VirtualBox.
-
-The virtual machine was prepared as the main workstation for the laboratory.
-
----
-
-## Step 3. Configure the NAT Network
-
-A NAT Network was used to provide networking for the virtual laboratory.
-
-The lab network was configured with the following settings:
-
-| Setting | Value |
-| --- | --- |
-| Network Type | NAT Network |
-| Network Address | 10.0.0.0/24 |
-| Gateway | 10.0.0.1 |
-
-The NAT Network allows the Kali Linux virtual machine to communicate with the gateway and access external network resources while keeping the laboratory environment separated from the host network.
-
-### Network Configuration
-
-```text
-Network: 10.0.0.0/24
-Gateway: 10.0.0.1
-```
-### Screenshot
-
-<img width="960" height="540" alt="NatNetwork_Setup" src="https://github.com/user-attachments/assets/79dea473-7690-482c-8ea5-9c3091694bab" />
+### Screenshot:
+<img width="950" height="750" alt="Lab 4 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/ff8d35d6-fe85-4176-b37f-5d8b695eb164" />
 
 ---
 
-## Step 4. Configure the Static IPv4 Address
-
-The Kali Linux virtual machine was configured with a static IPv4 address to keep the network configuration consistent during the laboratory exercises.
-
-The IPv4 settings were configured as follows:
-
-| Setting | Value |
-| --- | --- |
-| IPv4 Method | Manual |
-| IP Address | 10.0.0.2 |
-| Netmask | 24 |
-| Gateway | 10.0.0.1 |
-| DNS Server | 8.8.8.8 |
-
-The static IP configuration was applied using the Network Connections settings in Kali Linux.
+## Task 3. TCP Stream 2
+This task was similar to the second task but in this task I was assigned to follow the stream to find out about various web pages a firm's employees visit during work hours and it was found that an employee downloaded a file and hid a message which was seen as an anomaly.
 
 ### Screenshot
 
-<img width="1536" height="708" alt="Kali_network_Settings" src="https://github.com/user-attachments/assets/405430e5-47e5-4231-ab74-e12c76588d9c" />
+<img width="950" height="750" alt="Lab 5 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/dea7cfbc-0e2f-481b-82c7-e70d819afdb8" />
 
-
-## Step 5. Verify the Lab Network
-
-After configuring the network, several commands were used to verify the setup.
-
-### Check the Kali IP Address
-
-```bash
-ip addr
-```
-Note: Make sure the ip is exactly 10.0.0.2 as the in the settings
-The `eth0` must show:
-
-```text
-10.0.0.2/24
-```
-
-### Test External Connectivity
-
-```bash
-ping 8.8.8.8
-```
-
-### Screenshot
-
-<img width="4400" height="2029" alt="Internet Access" src="https://github.com/user-attachments/assets/7b43e57b-0193-4c87-9aa1-5a69617dc708" />
-
-
-This confirmed connectivity between Kali Linux and the configured gateway.
-
-## Step 6. Create a Virtual Machine Snapshot
-
-After completing the Kali Linux configuration and network verification, a snapshot was created in VirtualBox.
-
-The snapshot is the restore point for the cybersecurity laboratory.
-
-### Snapshot Details
-
-| Setting | Value |
-| --- | --- |
-| Snapshot Name | My Fresh Kali Linux |
-| Status | Kali VM powered off |
-| Purpose | Restore point for the verified lab environment |
-
-The snapshot was created after verifying the static IP address, gateway connectivity and internet connectivity
-
-This allows the virtual machine to be restored to a known working state if any configuration changes cause problems during future laboratory exercises.
-
-### Screenshot
-
-<img width="960" height="540" alt="Snapshot_Kali_Linux" src="https://github.com/user-attachments/assets/7c3baf1a-aa0a-4572-9ee1-5e4663cf88d9" />
 
 ---
 
-## Lab Verification Summary
+## Task 4. HTTP Plain Text Credentials
+I navigated through HTTP packets using the "http" filter in Wireshark to complete this task. It was about A login page of a customer on an unencrypted website so it left the customer's credentials exposed leaving them vulnerable for attackers to exploit their account.
+The safe way to stop this is to only type in your credentials over an HTTPS connection on a website.
 
-The following checks were completed successfully:
+### Screenshot
 
-| Verification | Result |
-| --- | --- |
-| Kali IP Address | 10.0.0.2/24 |
-| Gateway Connectivity | Successful |
-| Internet Connectivity | Successful |
-| Virtual Machine Snapshot | Created |
+<img width="950" height="750" alt="Lab 6 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/b46b692c-b627-4306-957e-a5202fb47f30" />
 
-The laboratory environment was successfully configured and verified for cybersecurity training activities.
+
+
+## Task 5. Brute Force Attacks
+In this lab I was tasked to detect a brute-force attack from a specific IP . I spotted the IP by finding a specific IP that has been trying multiple passwords over the network targeting the admin account and It really got in at the last end. This can be prevented by using a strong password policy
+
+
+### Screenshot
+
+<img width="950" height="750" alt="Lab 7 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/f675d85f-e383-430c-b512-8b83b7ed7fa6" />
+
+
+
+
+## Step 6. VoIP scam
+In this lab the task was to intercept an unencrypted phone call between a customer and a customer service personnel using telephony on wireshark. 
+I was able to obtain the credit card number and expiry date which can harmful to the victim of the card .
+The solution is to use an encrypted phone call protocols to make such important calls to avoid sensitive informations being exposed to attackers
+
+### Screenshot
+
+<img width="950" height="750" alt="Lab 8 Result - Osei Shadrack Poku" src="https://github.com/user-attachments/assets/d58cac7a-8a53-4e29-8e23-929dc65b6597" />
 
 ---
 
-## Problems Encountered & Solutions
 
-During the lab setup, a few internet connectivity issues were encountered and resolved.
+## What I Learned From these Labs
 
-### 1. IP assignment issues leading to internet connectivity failure
+Through this lab , I learned how to:
 
-**Solution:**  
-I used these three prompts provided by our instructor
-1. sudo nmcli connection modify "Wireless Connection 1" ipv4.dad-timeout 0
-2. sudo nmcli connection down "Wired Connection 1"
-3. sudo nmcli connection up "Wired Connection 1" 
-
-## What I Learned
-
-Through this lab setup, I learned how to:
-
-- Install and configure Kali Linux in VirtualBox.
-- Configure a NAT Network for a virtual cybersecurity laboratory.
-- Assign a static IPv4 address to a Kali Linux virtual machine.
-- Configure the gateway and DNS settings.
-- Verify network connectivity using ping.
-- Create a VirtualBox snapshot for restoring the lab environment.
-- Troubleshoot basic network configuration issues.
-
-This lab provided practical experience in preparing a controlled environment for future cybersecurity exercises.
+- Install and use Wireshark.
+- Capture and analyze packets on my network.
+- Follow up conversations that is unencrypted between HTTP packets.
+- Identify a brute-force attack over a network.
+- Tail a certain IP address and know what's it is doing on the network whether it is suspicious or normal.
+- Known more ports like the SIP and RTP as voice protocols.
+- Use Wireshark filters to navigate through a large sum of packet captures.
 
 ---
 
@@ -221,19 +134,12 @@ The lab environment helps provide a safe and isolated setup for learning cyberse
 ## Tools & Resources
 
 ### Tools Used
-
-- Oracle VirtualBox
-- Kali Linux 2025.3
+- Wireshark 
 - Windows 11 Pro
-- NetworkManager
-- `ping`
 
 ### Resources
-
-- **7-Zip:** [https://7-zip.org/download.html](https://7-zip.org/download.html)
-- **VirtualBox:** [https://virtualbox.org/wiki/Downloads](https://virtualbox.org/wiki/Downloads)
-- **Kali Linux:** [https://kali.org/get-kali](https://kali.org/get-kali)
-
+- **Wireshark:** [https://wireshark.org/download.html](https://www.wireshark.org/download.html)
+- **NetworkWalks labs:** [https://networkwalks.com/wireshark-lab3/]
 
 
 ---
@@ -250,4 +156,4 @@ LinkedIn: [Shadrack Osei Poku](https://www.linkedin.com/in/shadrack-osei-poku-35
 
 ##  Project Overview
 
-**Program Name:** Cybersecurity at NetworkWalks | **Week:** 01 | **Project:** Cybersecurity & Pentesting Lab Setup | **Repository:** Github  (Use the above pictures to write a README.md for my GitHub using the syntax provided explain briefly in simple words and professionally written sentences don’t change the author details or any personal details)
+**Program Name:** Cybersecurity at NetworkWalks | **Week:** 01 | **Project:** Completed Wireshark Labs | **Repository:** Github  (Use the above pictures to write a README.md for my GitHub using the syntax provided explain briefly in simple words and professionally written sentences don’t change the author details or any personal details)
